@@ -3,8 +3,7 @@ import 'text-encoding';
 import { Base64 } from 'js-base64';
 
 export function generateRandomString(length: number) {
-  const array = new Uint32Array(length);
-  global.crypto.getRandomValues(array);
+  const array = global.crypto.getRandomValues(new Uint32Array(length));
   return Array.from(array, (uint32) =>
     ('0' + uint32.toString(16)).substr(-1)
   ).join('');
