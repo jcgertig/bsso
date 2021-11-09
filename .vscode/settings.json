@@ -1,0 +1,16 @@
+{
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.packageManager": "yarn",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.words": [
+    "bpipe",
+    "bsso",
+    "sapi"
+  ],
+  "cSpell.ignoreWords": [
+  ]
+}

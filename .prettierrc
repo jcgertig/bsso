@@ -1,0 +1,15 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "arrowParens": "always",
+  "parser": "typescript",
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}
+  
