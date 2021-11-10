@@ -35,3 +35,11 @@ it('should return a redirect url', async () => {
     'https://bsso.blpprofessional.com/as/authorization.oauth2?adapter=token&client_id=test&code_challenge=AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ&code_challenge_method=S256&redirect_uri=url&response_type=code&scope=sapi%20blpapi-eps&ssotoken=token'
   );
 });
+
+describe('should handle isExpired properly', () => {
+  it('when no token exists yet', async () => {
+    expect(
+      new BSSO({ clientId: 'test', redirectUri: 'url' }).isExpired()
+    ).toEqual(true);
+  });
+});
