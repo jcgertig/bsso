@@ -1,6 +1,6 @@
 # Bloomberg SSO js utilities
-[![NPM Version][npm-v]][package-url]
-[![License][license]][package-url]
+[![NPM Version](https://img.shields.io/npm/v/bsso.svg)][package-url]
+[![License](https://img.shields.io/npm/l/bsso.svg)][package-url]
 [![Build Status](https://travis-ci.org/jcgertig/bsso.svg?branch=master)](https://travis-ci.org/jcgertig/bsso)
 [![Code Climate](https://codeclimate.com/github/jcgertig/bsso/badges/gpa.svg)](https://codeclimate.com/github/jcgertig/bsso)
 [![Test Coverage](https://codeclimate.com/github/jcgertig/bsso/badges/coverage.svg)](https://codeclimate.com/github/jcgertig/bsso/coverage)
@@ -54,6 +54,4 @@ if (tokenFromRedirectUrl) {
 | toJSON         |                               | object  |
 
 
-[npm-v]: https://img.shields.io/npm/v/bsso.svg
-[license]: https://img.shields.io/npm/l/bsso.svg
 [package-url]: https://npmjs.com/package/bsso
