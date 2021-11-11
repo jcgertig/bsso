@@ -35,7 +35,7 @@ if (tokenFromRedirectUrl) {
 
   if (code) {
     // if we have the code, we are ready to continue getting token for authorization
-    const activeToken = await bsso.getActiveToken(code);
+    const activeToken = await bsso.getToken(code);
     console.log('activeToken', activeToken);
   }
 }
@@ -48,7 +48,7 @@ if (tokenFromRedirectUrl) {
 
 | Method         | Arguments                     | Return  |
 |----------------|-------------------------------|---------|
-| getActiveToken | code?: string                 | string  |
+| getToken       | code?: string                 | string  |
 | isExpired      |                               | boolean |
 | getRedirectURL | token: string, scope?: string | string  |
 | toJSON         |                               | object  |
