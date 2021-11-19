@@ -6,4 +6,6 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
   collectCoverage: true,
   coverageReporters: ['lcov'],
+  automock: false,
+  resetMocks: false,
 };

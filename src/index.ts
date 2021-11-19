@@ -19,48 +19,24 @@ export class BSSO {
   private _refreshToken: string | null = null;
   private _expirationTimestamp: number | null = null;
 
-  protected set clientId(value: string) {
-    this._clientId = value;
-  }
-
   public get clientId() {
     return this._clientId;
-  }
-
-  protected set redirectUri(value: string) {
-    this._redirectUri = value;
   }
 
   public get redirectUri() {
     return this._redirectUri;
   }
 
-  protected set codeVerifier(value: string) {
-    this._codeVerifier = value;
-  }
-
   public get codeVerifier() {
     return this._codeVerifier;
-  }
-
-  protected set accessToken(value: string | null) {
-    this._accessToken = value;
   }
 
   public get accessToken() {
     return this._accessToken;
   }
 
-  protected set refreshToken(value: string | null) {
-    this._refreshToken = value;
-  }
-
   public get refreshToken() {
     return this._refreshToken;
-  }
-
-  protected set expirationTimestamp(value: number | null) {
-    this._expirationTimestamp = value;
   }
 
   public get expirationTimestamp() {
@@ -75,23 +51,19 @@ export class BSSO {
     refreshToken = null,
     expirationTimestamp = null,
   }: BSSOInitArguments) {
-    this.clientId = clientId;
-    this.redirectUri = encodeURI(redirectUri);
+    this._clientId = clientId;
+    this._redirectUri = encodeURI(redirectUri);
     // the verifier is very important, we will need to hold on to it
     // after the redirect to verify our identity as per the PKCE workflow
-    this.codeVerifier = codeVerifier ?? generateRandomString(43);
+    this._codeVerifier = codeVerifier ?? generateRandomString(43);
 
     // if possible rehydrate
-    this.accessToken = accessToken;
-    this.refreshToken = refreshToken;
-    this.expirationTimestamp = expirationTimestamp;
+    this._accessToken = accessToken;
+    this._refreshToken = refreshToken;
+    this._expirationTimestamp = expirationTimestamp;
   }
 
-  async createTokenFromRedirectCode(code?: string) {
-    if (!code) {
-      throw Error('Cannot create token if no redirect code is present!');
-    }
-
+  private async createTokenFromRedirectCode(code: string) {
     const body = new FormData();
     body.append('grant_type', 'authorization_code');
     body.append('code', code);
@@ -125,8 +97,8 @@ export class BSSO {
 
     // because we are getting new tokens, clear the currently
     // existing ones from memory
-    this.accessToken = null;
-    this.refreshToken = null;
+    this._accessToken = null;
+    this._refreshToken = null;
 
     const response = await fetch(
       'https://bsso.blpprofessional.com/as/token.oauth2',
@@ -144,18 +116,23 @@ export class BSSO {
     const regenerated = await fetchResponse.json();
 
     if (regenerated.error) {
-      throw Error(regenerated.error);
+      throw new Error(regenerated.error);
     }
 
-    this.accessToken = regenerated.access_token;
-    this.refreshToken = regenerated.refresh_token;
-    this.expirationTimestamp =
-      new Date().getTime() / 1000 + regenerated.expires_in;
+    this._accessToken = regenerated.access_token;
+    this._refreshToken = regenerated.refresh_token;
+    this._expirationTimestamp = Date.now() / 1000 + regenerated.expires_in;
 
     return this.accessToken;
   }
 
-  public async getActiveToken(code?: string) {
+  public async getToken(code?: string) {
+    if (!this.accessToken && !this.refreshToken && !code) {
+      throw new Error(
+        'Have to have a redirect code to get token the first time.'
+      );
+    }
+
     if (this.accessToken && !this.isExpired()) {
       return Promise.resolve(this.accessToken);
     }

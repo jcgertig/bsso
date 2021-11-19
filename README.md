@@ -1,6 +1,5 @@
 # Bloomberg SSO js utilities
-[![NPM Version][npm-v]][package-url]
-[![License][license]][package-url]
+[![NPM Version](https://img.shields.io/npm/v/bsso.svg)][package-url]
 [![Build Status](https://travis-ci.org/jcgertig/bsso.svg?branch=master)](https://travis-ci.org/jcgertig/bsso)
 [![Code Climate](https://codeclimate.com/github/jcgertig/bsso/badges/gpa.svg)](https://codeclimate.com/github/jcgertig/bsso)
 [![Test Coverage](https://codeclimate.com/github/jcgertig/bsso/badges/coverage.svg)](https://codeclimate.com/github/jcgertig/bsso/coverage)
@@ -29,13 +28,13 @@ const tokenFromRedirectUrl = new URLSearchParams(window.location.hash).get('#tok
 if (tokenFromRedirectUrl) {
   // if we have #token, we are ready for redirect
   console.log('redirect');
-  window.location.replace(bsso.getRedirectURL(tokenFromRedirectUrl));
+  window.location.replace(await bsso.getRedirectURL(tokenFromRedirectUrl));
 } else {
   const code = new URLSearchParams(window.location.search).get("code");
 
   if (code) {
     // if we have the code, we are ready to continue getting token for authorization
-    const activeToken = await bsso.getActiveToken(code);
+    const activeToken = await bsso.getToken(code);
     console.log('activeToken', activeToken);
   }
 }
@@ -48,12 +47,10 @@ if (tokenFromRedirectUrl) {
 
 | Method         | Arguments                     | Return  |
 |----------------|-------------------------------|---------|
-| getActiveToken | code?: string                 | string  |
+| getToken       | code?: string                 | string  |
 | isExpired      |                               | boolean |
 | getRedirectURL | token: string, scope?: string | string  |
 | toJSON         |                               | object  |
 
 
-[npm-v]: https://img.shields.io/npm/v/bsso.svg
-[license]: https://img.shields.io/npm/l/bsso.svg
 [package-url]: https://npmjs.com/package/bsso
