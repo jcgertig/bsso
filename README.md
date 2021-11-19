@@ -29,7 +29,7 @@ const tokenFromRedirectUrl = new URLSearchParams(window.location.hash).get('#tok
 if (tokenFromRedirectUrl) {
   // if we have #token, we are ready for redirect
   console.log('redirect');
-  window.location.replace(bsso.getRedirectURL(tokenFromRedirectUrl));
+  window.location.replace(await bsso.getRedirectURL(tokenFromRedirectUrl));
 } else {
   const code = new URLSearchParams(window.location.search).get("code");
 
