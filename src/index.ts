@@ -64,7 +64,7 @@ export class BSSO {
   }
 
   private async createTokenFromRedirectCode(code: string) {
-    const body = new FormData();
+    const body = new URLSearchParams();
     body.append('grant_type', 'authorization_code');
     body.append('code', code);
     body.append('code_verifier', this.codeVerifier);
@@ -90,7 +90,7 @@ export class BSSO {
       );
     }
 
-    const body = new FormData();
+    const body = new URLSearchParams();
     body.append('grant_type', 'refresh_token');
     body.append('refresh_token', this.refreshToken);
     body.append('client_id', this.clientId);
