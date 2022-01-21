@@ -1,6 +1,6 @@
 {
   "name": "bsso",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "Bloomberg SSO js utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,8 +9,7 @@
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
-    "test": "jest --config jest.config.js --coverage",
-    "publish": "npm publish"
+    "test": "jest --config jest.config.js --coverage"
   },
   "repository": {
     "type": "git",

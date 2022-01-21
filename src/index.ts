@@ -76,7 +76,7 @@ export class BSSO {
       {
         method: 'POST',
         mode: 'cors',
-        body,
+        body: body.toString(),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -108,7 +108,7 @@ export class BSSO {
       {
         method: 'POST',
         mode: 'cors',
-        body,
+        body: body.toString(),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
