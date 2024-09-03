@@ -11,7 +11,8 @@ yarn add bsso
 ```
 
 ## ! Usage with react native !
-First setup [react-native-get-random-values](https://github.com/LinusU/react-native-get-random-values) and [react-native-webview-crypto](https://github.com/webview-crypto/react-native-webview-crypto) and [react-native-url-polyfill](https://github.com/charpeni/react-native-url-polyfill).
+First setup [react-native-get-random-values](https://github.com/LinusU/react-native-get-random-values) and [react-native-webview-crypto](https://github.com/webview-crypto/react-native-webview-crypto) and [react-native-url-polyfill](https://github.com/charpeni/react-native-url-polyfill) and
+[text-encoding](https://www.npmjs.com/package/text-encoding-polyfill).
 
 
 ## Simple Usage

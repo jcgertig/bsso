@@ -1,6 +1,6 @@
 {
   "name": "bsso",
-  "version": "0.5.2",
+  "version": "1.0.0",
   "description": "Bloomberg SSO js utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -49,7 +49,6 @@
   ],
   "dependencies": {
     "js-base64": "^3.7.2",
-    "query-string": "^7.0.1",
-    "text-encoding": "^0.7.0"
+    "query-string": "^7.0.1"
   }
 }

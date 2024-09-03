@@ -1,5 +1,3 @@
-import 'text-encoding';
-
 import { Base64 } from 'js-base64';
 
 export function generateRandomString(length: number) {
