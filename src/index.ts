@@ -158,7 +158,7 @@ export class BSSO {
 
   public async getRedirectURL(token: string, scope = 'sapi blpapi-eps') {
     // hash the verifier via SHA-256, the algorithm we specify below as our code_challenge_method
-    const challengeHash = base64UrlEncode(await sha256(this.codeVerifier));
+    const challengeHash = base64UrlEncode(sha256(this.codeVerifier));
 
     return queryString.stringifyUrl({
       url: 'https://bsso.blpprofessional.com/as/authorization.oauth2',
