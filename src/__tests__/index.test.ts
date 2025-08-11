@@ -43,12 +43,6 @@ beforeAll(() => {
     getRandomValues: jest.fn((array: Uint32Array) =>
       new Uint32Array(array.length).fill(1, 0, array.length)
     ),
-    subtle: {
-      digest: jest.fn(
-        (pre: string, array: Uint8Array) =>
-          new Uint8Array(array.length).fill(1, 0, array.length).buffer
-      ),
-    },
   };
 });
 
@@ -104,7 +98,7 @@ describe('should return serialized data with toJSON', () => {
 
 it('should return a redirect url', async () => {
   expect(await new BSSO(bssoInitArgs).getRedirectURL('token')).toEqual(
-    'https://bsso.blpprofessional.com/as/authorization.oauth2?adapter=token&client_id=test&code_challenge=AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ&code_challenge_method=S256&redirect_uri=url&response_type=code&scope=sapi%20blpapi-eps&ssotoken=token'
+    'https://bsso.blpprofessional.com/as/authorization.oauth2?adapter=token&client_id=test&code_challenge=hBISRjNfIHPidxEuE4CqxLk-MR6TWFVZzA9gIpy5r5U&code_challenge_method=S256&redirect_uri=url&response_type=code&scope=sapi%20blpapi-eps&ssotoken=token'
   );
 });
 

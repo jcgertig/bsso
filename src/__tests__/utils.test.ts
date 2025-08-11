@@ -6,12 +6,6 @@ beforeAll(() => {
     getRandomValues: jest.fn((array: Uint32Array) =>
       new Uint32Array(array.length).fill(1, 0, array.length)
     ),
-    subtle: {
-      digest: jest.fn(
-        (pre: string, array: Uint8Array) =>
-          new Uint8Array(array.length).fill(1, 0, array.length).buffer
-      ),
-    },
   };
 });
 
@@ -20,9 +14,11 @@ it('should generateRandomString of length 10', () => {
 });
 
 it('should sha256 a string', async () => {
-  expect((await sha256('test')).byteLength).toBe(4);
+  expect(sha256('test').byteLength).toBe(32);
 });
 
 it('should base64UrlEncode a string', async () => {
-  expect(base64UrlEncode(await sha256('test'))).toBe('AQEBAQ');
+  expect(base64UrlEncode(sha256('test'))).toBe(
+    'n4bQgYhMfWWaL-qgxVrQFaO_TxsrC4Is0V1sFbDwCgg'
+  );
 });
